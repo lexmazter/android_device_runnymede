@@ -29,9 +29,8 @@ $(call inherit-product, device/htc/runnymede/device.mk)
 
 # Set those variables here to overwrite the inherited values.
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := cm_runnymede
+PRODUCT_NAME := htc_runnymede
+PRODUCT_BRAND := htc
 PRODUCT_DEVICE := runnymede
-PRODUCT_BRAND := Cyanogenmod
-PRODUCT_MODEL := Runnymede
-PRODUCT_MANUFACTURER := HTC
-
+PRODUCT_MODEL := HTC Sensation XL with Beats Audio X315e
+PRODUCT_MANUFACTURER := htc

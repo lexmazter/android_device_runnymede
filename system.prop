@@ -115,3 +115,5 @@ ro.vendor.extension_library=/system/lib/libqc-opt.so
 # For autobot car pc
 ro.htc.htcmode.data.path = /dev/ttyHSUSB3
 
+# USB Mounting
+persist.sys.usb.config=mass_storage,adb

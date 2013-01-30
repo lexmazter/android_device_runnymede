@@ -10,7 +10,7 @@ $(call inherit-product, vendor/cm/config/gsm.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=htc_runnymede BUILD_FINGERPRINT=htc_europe/htc_runnymede/runnymede:2.3.5/GRJ90/156318.4:user/release-keys PRIVATE_BUILD_DESC="2.10.401.4 CL156318 release-keys"
 
-PRODUCT_NAME := cm_runnymede
+PRODUCT_NAME := htc_runnymede
 PRODUCT_DEVICE := runnymede
 
 #

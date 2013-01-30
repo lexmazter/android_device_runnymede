@@ -31,7 +31,18 @@ USE_CAMERA_STUB := true
 # inherit from the proprietary version
 -include vendor/htc/runnymede/BoardConfigVendor.mk
 
+TARGET_CPU_ABI  := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno205
+ARCH_ARM_HAVE_TLS_REGISTER := true
+ARCH_ARM_HAVE_NEON := true
+TARGET_BOARD_PLATFORM := msm7x30
 TARGET_BOOTLOADER_BOARD_NAME := runnymede
+
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
 
 TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
 TARGET_USE_SCORPION_PLD_SET := true
@@ -42,12 +53,15 @@ BOARD_KERNEL_CMDLINE :=
 BOARD_KERNEL_BASE := 0x14400000
 BOARD_KERNEL_PAGESIZE := 4096
 
+BOARD_USES_QCOM_GPS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := runnymede
 BOARD_VENDOR_QCOM_AMSS_VERSION := 1200
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 BOARD_HAVE_HTC_FFC := false
 BOARD_USE_NEW_LIBRIL_HTC := true
+BOARD_USES_QCOM_AUDIO_VOIPMUTE := false	
+BOARD_USES_QCOM_AUDIO_RESETALL := false
 
 # cat /proc/emmc
 #dev:        size     erasesize name
@@ -64,13 +78,16 @@ BOARD_USE_NEW_LIBRIL_HTC := true
 #mmcblk0p27: 00300000 00000200 "modem_st2"
 
 TARGET_USERIMAGES_USE_EXT4 := true
-BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00400000
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x0087f400
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x3ffffe00
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x101fffe00
+BOARD_BOOTIMAGE_PARTITION_SIZE := 4194304
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 8909824
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4328521216
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 4328521216
 BOARD_FLASH_BLOCK_SIZE := 4096
 
+BOARD_EGL_CFG := device/htc/runnymede/prebuilt/egl.cfg
+
 # Wifi related defines
+BOARD_WLAN_DEVICE := bcm4329
 WIFI_BAND                        := 802_11_ABG
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
@@ -78,9 +95,10 @@ BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_HOSTAPD_DRIVER             := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
 BOARD_WLAN_DEVICE                := bcmdhd
-WIFI_DRIVER_FW_PATH_STA          := "/system/etc/firmware/fw_bcmdhd.bin"
-WIFI_DRIVER_FW_PATH_AP           := "/system/etc/firmware/fw_bcmdhd_apsta.bin"
-WIFI_DRIVER_FW_PATH_P2P          := "/system/etc/firmware/fw_bcmdhd_p2p.bin"
+WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/bcmdhd.ko"
+WIFI_DRIVER_FW_PATH_STA          := "/system/etc/firmware/fw_bcm4330_b1.bin"
+WIFI_DRIVER_FW_PATH_AP           := "/system/etc/firmware/fw_bcm4330_apsta_b1.bin"
+WIFI_DRIVER_FW_PATH_P2P          := "/system/etc/firmware/fw_bcm4330_p2p_b1.bin"
 WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path"
 
 TARGET_RELEASETOOLS_EXTENSIONS := device/htc/common
