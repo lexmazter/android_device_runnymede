@@ -87,7 +87,6 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 BOARD_EGL_CFG := device/htc/runnymede/prebuilt/egl.cfg
 
 # Wifi related defines
-BOARD_WLAN_DEVICE := bcm4329
 WIFI_BAND                        := 802_11_ABG
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
