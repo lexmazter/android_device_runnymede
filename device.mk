@@ -56,18 +56,25 @@ PRODUCT_COPY_FILES += \
 # GPS / Lights / Sensors
 PRODUCT_PACKAGES += \
     gps.runnymede \
-    lights.runnymede \
+    lights.msm7x30 \
     sensors.runnymede
 
 #HWC Hal
 PRODUCT_PACKAGES += \
-    hwcomposer.msm7x30\
-    gralloc.msm7x30
+    hwcomposer.msm7x30 \
+    gralloc.msm7x30 \
+    gralloc.runnymede \
+    copybit.msm7x30
 
 # audio
 PRODUCT_PACKAGES += \
   audio.a2dp.default \
+  audio.primary.default \
   audio_policy.default
+
+# camera
+PRODUCT_PACKAGES += \
+  camera.default
 
 # video
 PRODUCT_PACKAGES += \
