@@ -110,17 +110,43 @@ PRODUCT_PACKAGES += \
 # Idc files
 PRODUCT_COPY_FILES += \
     device/htc/runnymede/prebuilt/usr/idc/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc \
+    device/htc/runnymede/prebuilt/usr/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
     device/htc/runnymede/prebuilt/usr/idc/qwerty.idc:system/usr/idc/qwerty.idc \
     device/htc/runnymede/prebuilt/usr/idc/qwerty2.idc:system/usr/idc/qwerty2.idc \
+    device/htc/runnymede/prebuit/usr/idc/projector-input.idc:system/usr/idc/projector-input.idc
+
+# Keychar files
+PRODUCT_COPY_FILES += \
+    device/htc/runnymede/prebuilt/usr/keychars/atmel-touchscreen.kcm:system/usr/keychars/atmel-touchscreen.kcm \
     device/htc/runnymede/prebuilt/usr/keychars/Generic.kcm:system/usr/keychars/Generic.kcm \
     device/htc/runnymede/prebuilt/usr/keychars/qwerty.kcm:system/usr/keychars/qwerty.kcm \
     device/htc/runnymede/prebuilt/usr/keychars/qwerty2.kcm:system/usr/keychars/qwerty2.kcm \
     device/htc/runnymede/prebuilt/usr/keychars/Virtual.kcm:system/usr/keychars/Virtual.kcm \
+
+# Keylayout files
+PRODUCT_COPY_FILES += \
     device/htc/runnymede/prebuilt/usr/keylayout/atmel-touchscreen.kl:system/usr/keylayout/atmel-touchscreen.kl \
     device/htc/runnymede/prebuilt/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
+    device/htc/runnymede/prebuilt/usr/keylayout/Generic.kl:system/usr/keylayout/Generic.kl \
     device/htc/runnymede/prebuilt/usr/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl \
-    device/htc/runnymede/prebuilt/usr/keylayout/runnymede-keypad.kl:system/usr/keylayout/runnymede-keypad.kl \
     device/htc/runnymede/prebuilt/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
+    device/htc/runnymede/prebuilt/usr/keylayout/runnymede-keypad.kl:system/usr/keylayout/runnymede-keypad.kl \
+    device/htc/runnymede/prebuilt/usr/keylayout/runnymede-keypad-ara.kl:system/usr/keylayout/runnymede-keypad-ara.kl \
+    device/htc/runnymede/prebuilt/usr/keylayout/runnymede-keypad-ell.kl:system/usr/keylayout/runnymede-keypad-ell.kl \
+    device/htc/runnymede/prebuilt/usr/keylayout/runnymede-keypad-fra.kl:system/usr/keylayout/runnymede-keypad-fra.kl \
+    device/htc/runnymede/prebuilt/usr/keylayout/runnymede-keypad-ger.kl:system/usr/keylayout/runnymede-keypad-ger.kl \
+    device/htc/runnymede/prebuilt/usr/keylayout/runnymede-keypad-ita.kl:system/usr/keylayout/runnymede-keypad-ita.kl \
+    device/htc/runnymede/prebuilt/usr/keylayout/runnymede-keypad-tur.kl:system/usr/keylayout/runnymede-keypad-tur.kl \
+    device/htc/runnymede/prebuilt/usr/keylayout/runnymede-keypad-wwe.kl:system/usr/keylayout/runnymede-keypad-wwe.kl \
+    device/htc/runnymede/prebuilt/usr/keylayout/runnymede-keypad-bopomo.kl:system/usr/keylayout/runnymede-keypad-bopomo.kl \
+    device/htc/runnymede/prebuilt/usr/keylayout/Vendor_05ac_Product_0239.kl:system/usr/keylayout/Vendor_05ac_Product_0239.kl \
+    device/htc/runnymede/prebuilt/usr/keylayout/Vendor_22b8_Product_093d.kl:system/usr/keylayout/Vendor_22b8_Product_093d.kl \
+    device/htc/runnymede/prebuilt/usr/keylayout/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_028e.kl \
+    device/htc/runnymede/prebuilt/usr/keylayout/Vendor_046d_Product_c216.kl:system/usr/keylayout/Vendor_046d_Product_c216.kl \
+    device/htc/runnymede/prebuilt/usr/keylayout/Vendor_046d_Product_c294.kl:system/usr/keylayout/Vendor_046d_Product_c294.kl \
+    device/htc/runnymede/prebuilt/usr/keylayout/Vendor_046d_Product_c299.kl:system/usr/keylayout/Vendor_046d_Product_c299.kl \
+    device/htc/runnymede/prebuilt/usr/keylayout/Vendor_046d_Product_c532.kl:system/usr/keylayout/Vendor_046d_Product_c532.kl \
+    device/htc/runnymede/prebuilt/usr/keylayout/Vendor_054c_Product_0268.kl:system/usr/keylayout/Vendor_054c_Product_0268.kl
 
 # Vold file
 PRODUCT_COPY_FILES += \
