@@ -117,7 +117,7 @@ PRODUCT_COPY_FILES += \
     device/htc/runnymede/prebuilt/usr/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
     device/htc/runnymede/prebuilt/usr/idc/qwerty.idc:system/usr/idc/qwerty.idc \
     device/htc/runnymede/prebuilt/usr/idc/qwerty2.idc:system/usr/idc/qwerty2.idc \
-    device/htc/runnymede/prebuit/usr/idc/projector_input.idc:system/usr/idc/projector_input.idc
+    device/htc/runnymede/prebuilt/usr/idc/projector_input.idc:system/usr/idc/projector_input.idc
 
 # Keychar files
 PRODUCT_COPY_FILES += \
