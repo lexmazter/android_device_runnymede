@@ -142,7 +142,7 @@ PRODUCT_COPY_FILES += \
     device/htc/runnymede/prebuilt/usr/keylayout/runnymede-keypad-ita.kl:system/usr/keylayout/runnymede-keypad-ita.kl \
     device/htc/runnymede/prebuilt/usr/keylayout/runnymede-keypad-tur.kl:system/usr/keylayout/runnymede-keypad-tur.kl \
     device/htc/runnymede/prebuilt/usr/keylayout/runnymede-keypad-wwe.kl:system/usr/keylayout/runnymede-keypad-wwe.kl \
-    device/htc/runnymede/prebuilt/usr/keylayout/runnymede-keypad-bopomo.kl:system/usr/keylayout/runnymede-keypad-bopomo.kl \
+    device/htc/runnymede/prebuilt/usr/keylayout/runnymede-keypad-wwe-bopomo.kl:system/usr/keylayout/runnymede-keypad-wwe-bopomo.kl \
     device/htc/runnymede/prebuilt/usr/keylayout/Vendor_05ac_Product_0239.kl:system/usr/keylayout/Vendor_05ac_Product_0239.kl \
     device/htc/runnymede/prebuilt/usr/keylayout/Vendor_22b8_Product_093d.kl:system/usr/keylayout/Vendor_22b8_Product_093d.kl \
     device/htc/runnymede/prebuilt/usr/keylayout/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_028e.kl \
