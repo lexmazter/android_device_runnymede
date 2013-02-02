@@ -100,7 +100,11 @@ PRODUCT_PACKAGES += \
 
 # Video
 PRODUCT_PACKAGES += \
-  libI420colorconvert
+  libI420colorconvert \
+  libgenlock \
+  liboverlay \
+  libtilerenderer \
+  libQcomUI
 
 # Additional packages
 PRODUCT_PACKAGES += \
@@ -113,7 +117,7 @@ PRODUCT_COPY_FILES += \
     device/htc/runnymede/prebuilt/usr/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
     device/htc/runnymede/prebuilt/usr/idc/qwerty.idc:system/usr/idc/qwerty.idc \
     device/htc/runnymede/prebuilt/usr/idc/qwerty2.idc:system/usr/idc/qwerty2.idc \
-    device/htc/runnymede/prebuit/usr/idc/projector-input.idc:system/usr/idc/projector-input.idc
+    device/htc/runnymede/prebuit/usr/idc/projector_input.idc:system/usr/idc/projector_input.idc
 
 # Keychar files
 PRODUCT_COPY_FILES += \
@@ -121,7 +125,7 @@ PRODUCT_COPY_FILES += \
     device/htc/runnymede/prebuilt/usr/keychars/Generic.kcm:system/usr/keychars/Generic.kcm \
     device/htc/runnymede/prebuilt/usr/keychars/qwerty.kcm:system/usr/keychars/qwerty.kcm \
     device/htc/runnymede/prebuilt/usr/keychars/qwerty2.kcm:system/usr/keychars/qwerty2.kcm \
-    device/htc/runnymede/prebuilt/usr/keychars/Virtual.kcm:system/usr/keychars/Virtual.kcm \
+    device/htc/runnymede/prebuilt/usr/keychars/Virtual.kcm:system/usr/keychars/Virtual.kcm
 
 # Keylayout files
 PRODUCT_COPY_FILES += \
