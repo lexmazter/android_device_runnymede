@@ -23,13 +23,31 @@ PRODUCT_COPY_FILES += device/htc/runnymede/prebuilt/etc/gps.conf:system/etc/gps.
 
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 
+# Init
 PRODUCT_COPY_FILES += \
     device/htc/runnymede/prebuilt/root/init.runnymede.rc:root/init.runnymede.rc \
     device/htc/runnymede/prebuilt/root/ueventd.runnymede.rc:root/ueventd.runnymede.rc
 
+# Permissions
 PRODUCT_COPY_FILES += \
+    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
+    frameworks/base/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
+    frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/base/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
+    frameworks/base/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
+    frameworks/base/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
+    frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+    frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
+    frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/base/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
+    frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+    frameworks/base/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml \
+    frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
 
 ## (2) Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/htc/runnymede/runnymede-vendor.mk)
@@ -47,6 +65,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vold.umsdirtyratio=20
 
+# Overlay
 DEVICE_PACKAGE_OVERLAYS += device/htc/runnymede/overlay
 
 # gsm config xml file
@@ -70,11 +89,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
   audio.a2dp.default \
   audio.primary.default \
-  audio_policy.default
+  audio_policy.default \
+  libaudioalsa
 
 # camera
 PRODUCT_PACKAGES += \
-  camera.default
+  camera.default \
+  libcamera
 
 # video
 PRODUCT_PACKAGES += \
@@ -115,10 +136,6 @@ PRODUCT_COPY_FILES += \
 # apn config file
 PRODUCT_COPY_FILES += \
     device/htc/runnymede/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
-
-# init.d files
-PRODUCT_COPY_FILES += \
-    device/htc/runnymede/prebuilt/etc/init.d/01swap:system/etc/init.d/01swap
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 LOCAL_KERNEL := device/htc/runnymede/prebuilt/root/kernel
