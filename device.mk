@@ -13,44 +13,32 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-# common msm7x30 configs
-$(call inherit-product, device/htc/msm7x30-common/msm7x30.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# The gps config appropriate for this device
-PRODUCT_COPY_FILES += device/htc/runnymede/prebuilt/etc/gps.conf:system/etc/gps.conf
+# Inherit common msm7x30 configs
+$(call inherit-product, device/htc/msm7x30-common/msm7x30.mk)
 
-## (1) First, the most specific values, i.e. the aspects that are specific to GSM
+# Stuff common to all HTC phones
+#$(call inherit-product, device/htc/common/common.mk)
+
+# HTC Audio
+$(call inherit-product, device/htc/runnymede/media_a1026.mk)
+$(call inherit-product, device/htc/runnymede/media_htcaudio.mk)
+
+# Inherit qcom proprietary blobs
+$(call inherit-product, vendor/qcom/proprietary/qcom-vendor.mk)
 
 # Init
 PRODUCT_COPY_FILES += \
     device/htc/runnymede/prebuilt/root/init.runnymede.rc:root/init.runnymede.rc \
     device/htc/runnymede/prebuilt/root/ueventd.runnymede.rc:root/ueventd.runnymede.rc
 
-# Permissions
-PRODUCT_COPY_FILES += \
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
-    frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
-    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
-    frameworks/native/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
-    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
-    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
-    frameworks/native/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml \
-    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
+# The gps config appropriate for this device
+PRODUCT_COPY_FILES += device/htc/runnymede/prebuilt/etc/gps.conf:system/etc/gps.conf
 
 ## (2) Also get non-open-source GSM-specific aspects if available
-$(call inherit-product-if-exists, vendor/htc/runnymede/runnymede-vendor.mk)
+$(call inherit-product, vendor/htc/runnymede/runnymede-vendor.mk)
 
 ## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -72,44 +60,28 @@ DEVICE_PACKAGE_OVERLAYS += device/htc/runnymede/overlay
 PRODUCT_COPY_FILES += \
     device/htc/runnymede/voicemail-conf.xml:system/etc/voicemail-conf.xml
 
-# GPS / Lights / Sensors
+# Filesystem management tools
 PRODUCT_PACKAGES += \
+   make_ext4fs \
+   FileManager \
+   e2fsck \
+   setup_fs
+
+# Build extra non-CM packages
+PRODUCT_PACKAGES += \
+   FileManager \
+   Torch
+
+# GPS / BT / Lights / Sensors
+PRODUCT_PACKAGES += \
+    libbt-vendor \
     gps.runnymede \
     lights.msm7x30 \
     sensors.runnymede
 
-# HWC Hal
-PRODUCT_PACKAGES += \
-    hwcomposer.msm7x30 \
-    gralloc.msm7x30 \
-    gralloc.runnymede \
-    copybit.msm7x30
-
-# Audio
-PRODUCT_PACKAGES += \
-  audio.a2dp.default \
-  audio.primary.default \
-  audio_policy.default \
-  libaudioalsa
-
-# Camera
-PRODUCT_PACKAGES += \
-  camera.default \
-  liboemcamera \
-  libcamera
-
-# Video
-PRODUCT_PACKAGES += \
-  libI420colorconvert \
-  libgenlock \
-  liboverlay \
-  libtilerenderer \
-  libQcomUI
-
-# Additional packages
-PRODUCT_PACKAGES += \
-    GooManager \
-    FileExplorer
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 
 # Idc files
 PRODUCT_COPY_FILES += \
@@ -169,6 +141,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/runnymede/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
 
+# Kernel
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 LOCAL_KERNEL := device/htc/runnymede/prebuilt/root/kernel
 else
@@ -182,17 +155,16 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/runnymede/prebuilt/modules/bcmdhd.ko:system/lib/modules/bcmdhd.ko
 
-# stuff common to all HTC phones
-#$(call inherit-product, device/htc/common/common.mk)
+# We have enough space to hold precise GC data
+PRODUCT_TAGS += dalvik.gc.type-precise
 
-$(call inherit-product, build/target/product/full_base.mk)
+# Set build date
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
-# common msm7x30 configs
-$(call inherit-product, device/htc/msm7x30-common/msm7x30.mk)
+# Device uses high-density artwork where available
+PRODUCT_AAPT_CONFIG := normal hdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
+PRODUCT_LOCALES += en_US
 
-# HTC Audio
-$(call inherit-product, device/htc/runnymede/media_a1026.mk)
-$(call inherit-product, device/htc/runnymede/media_htcaudio.mk)
-
+# call dalvik heap config
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
-

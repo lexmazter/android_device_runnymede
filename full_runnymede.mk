@@ -27,10 +27,20 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from runnymede device
 $(call inherit-product, device/htc/runnymede/device.mk)
 
+# Specify phone tech before including full_phone
+$(call inherit-product, vendor/cm/config/gsm.mk)
+
+# Release Name
+PRODUCT_RELEASE_NAME := SXL
+
+# Copy Bootanimation
+PRODUCT_COPY_FILES += \
+    vendor/cm/prebuilt/common/bootanimation/480.zip:system/media/bootanimation.zip
+
 # Set those variables here to overwrite the inherited values.
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := htc_runnymede
 PRODUCT_BRAND := htc
 PRODUCT_DEVICE := runnymede
 PRODUCT_MODEL := HTC Sensation XL with Beats Audio X315e
-PRODUCT_MANUFACTURER := htc
+PRODUCT_MANUFACTURER := HTC
