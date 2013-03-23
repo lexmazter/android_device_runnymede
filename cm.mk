@@ -18,6 +18,15 @@ PRODUCT_RELEASE_NAME := Sensation XL
 PRODUCT_COPY_FILES +=  \
     vendor/cm/prebuilt/wvga/media/bootanimation.zip:system/media/bootanimation.zip
 
+# Goo Manager support
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.goo.developerid=runnycm \
+    ro.goo.board=$(subst full_,,$(TARGET_PRODUCT)) \
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.goo.rom=cmNightlies \
+    ro.goo.version=$(shell date +%Y%m%d)
+
 # Hot reboot
 PRODUCT_PACKAGE_OVERLAYS += \
     vendor/cm/overlay/hot_reboot
