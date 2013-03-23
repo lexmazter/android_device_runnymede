@@ -1,0 +1,16 @@
+## Vold 2.0 fstab for HTC Runnymede
+#
+
+#######################
+## Regular device mount
+##
+## Format: dev_mount <label> <mount_point> <part> <sysfs_path1...> [optional_flags...]
+## label        - Label for the volume
+## mount_point  - Where the volume will be mounted
+## part         - Partition # (1 based), or 'auto' for first usable partition.
+## <sysfs_path> - List of sysfs paths to source devices
+## optional_flags - Determine whether the volume is encryptable or nonremovable
+######################
+
+dev_mount sdcard /storage/primary/legacy 34 /devices/platform/msm_sdcc.2/mmc_host
+#end line ## keep this line

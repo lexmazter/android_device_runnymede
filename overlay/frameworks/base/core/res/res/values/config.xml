@@ -36,6 +36,19 @@
          config_hardware_automatic_brightness_available is not set, so we will use software implementation -->
     <bool name="config_automatic_brightness_available">true</bool>
 
+    <!-- Default color for notification LED is green -->
+    <color name="config_defaultNotificationColor">#ff00ff00</color>
+
+    <!-- Default blink frequency for notification LED is 2 seconds. -->
+    <integer name="config_defaultNotificationLedOff">2000</integer>
+
+    <string-array name="config_locationProviderPackageNames" translatable="false">
+        <!-- The standard AOSP fused location provider -->
+        <item>com.android.location.fused</item>
+        <!-- The Google Network Location Services location provider -->
+        <item>com.google.android.location</item>
+    </string-array>
+
     <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
          The N entries of this array define N + 1 zones as follows:
 
@@ -47,15 +60,15 @@
 
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
-         <item>160</item>
-         <item>225</item>
-         <item>320</item>
-         <item>640</item>
-         <item>1280</item>
-         <item>2600</item>
-         <item>5800</item>
-         <item>8000</item>
-         <item>10240</item>
+        <item>11</item>
+        <item>41</item>
+        <item>91</item>
+        <item>161</item>
+        <item>226</item>
+        <item>321</item>
+        <item>641</item>
+        <item>1281</item>
+        <item>2601</item>
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
@@ -63,16 +76,16 @@
          than the size of the config_autoBrightnessLevels array.
     -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>45</item>
-	<item>55</item>
-	<item>65</item>
-	<item>80</item>
-	<item>100</item>
-	<item>122</item>
-	<item>160</item>
-	<item>198</item>
-	<item>231</item>
-	<item>255</item>
+        <item>81</item>
+        <item>81</item>
+        <item>81</item>
+        <item>112</item>
+        <item>143</item>
+        <item>163</item>
+        <item>186</item>
+        <item>208</item>
+        <item>231</item>
+        <item>255</item>
     </integer-array>
 
     <!-- Array of output values for button backlight corresponding to the LUX values
@@ -83,8 +96,8 @@
         <item>255</item>
         <item>255</item>
         <item>255</item>
-        <item>0</item>
-        <item>0</item>
+        <item>255</item>
+        <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -102,7 +115,7 @@
         <item>255</item>
         <item>255</item>
         <item>255</item>
-        <item>0</item>
+        <item>-1</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
@@ -110,12 +123,8 @@
         <item>0</item>
     </integer-array>
 
-    <!-- Component name of the default wallpaper. This will be ImageWallpaper if not 
-         specified -->
-    <string name="default_wallpaper_component">com.android.wallpaper/.nexus.NexusWallpaper</string>
-
     <!-- Minimum screen brightness allowed by the power manager. -->
-    <integer name="config_screenBrightnessDim">31</integer>
+    <integer name="config_screenBrightnessDim">10</integer>
 
     <!-- An Array of "[Connection name],[ConnectivityManager.TYPE_xxxx],
          [associated radio-type],[priority],[restoral-timer(ms)],[dependencyMet]  -->
@@ -173,6 +182,12 @@
         <item>7</item>
     </integer-array>
 
+    <!-- Component name of the default wallpaper. This will be ImageWallpaper if not  specified -->
+    <string name="default_wallpaper_component">@null</string>
+
+    <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
+    <bool name="config_unplugTurnsOnScreen">true</bool>
+
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
     <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
 
@@ -186,6 +201,6 @@
     <bool name="config_disableMenuKeyInLockScreen">true</bool>
 
     <!-- Allow configurable hardware keylight timeout -->
-    <bool name="config_hasHardwareKeysWithBacklight">true</bool>
+    <!--<bool name="config_hasHardwareKeysWithBacklight">true</bool>-->
 
 </resources>
